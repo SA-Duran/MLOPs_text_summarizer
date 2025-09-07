@@ -1,0 +1,1 @@
+from src.textSummarizer.logging.logger import logger

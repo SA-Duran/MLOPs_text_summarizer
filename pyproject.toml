@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "textSummarizer"
+version = "0.0.1"
+description = "ML for text summarization using hugging face transformers"
+authors = [    { name = "Sadurane", email = "samuel.duran.en@gmail.com" }]
+license = { text = "MIT" }  # adjust if you have a LICENSE file
+keywords = ["nlp", "text", "summarizer"]
+readme = "README.md"
+requires-python = ">=3.8"
+
+dependencies = [
+    "transformers",
+    "transformers[sentencepiece]",
+    "datasets",
+    "sacrebleu ",
+    "rouge_score", 
+    "py7zr",
+    "pandas",
+    "nltk",
+    "tqdm",
+    "PyYAML",
+    "matplotlib",
+    "torch",
+    "notebook",
+    "boto3",
+    "mypy-boto3-s3",
+    "python-box==6.0.2",
+    "ensure==1.0.2",
+    "fastapi==0.78.0",
+    "uvicorn==0.18.3",
+    "Jinja2==3.1.2"
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
