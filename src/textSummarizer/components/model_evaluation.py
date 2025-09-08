@@ -5,7 +5,7 @@ import torch
 import pandas as pd
 from tqdm import tqdm
 from textSummarizer.entity.entities import ModelEvaluationConfig
-
+from textSummarizer.logging.logger import logger
 
 class ModelEvaluation:
     def __init__(self, config: ModelEvaluationConfig):
@@ -55,25 +55,27 @@ class ModelEvaluation:
 
 
     def evaluate(self):
+        logger.info(f"entra a evaluar")
         device = "cuda" if torch.cuda.is_available() else "cpu"
         tokenizer = AutoTokenizer.from_pretrained(self.config.tokenizer_path)
         model_pegasus = AutoModelForSeq2SeqLM.from_pretrained(self.config.model_path).to(device)
-       
+        logger.info(f"tokenizadores cargados y mandados a cpu")       
         #loading data 
         dataset_samsum_pt = load_from_disk(self.config.data_path)
-
+        logger.info(f"Cargado de datos listo")
 
         rouge_names = ["rouge1", "rouge2", "rougeL", "rougeLsum"]
-  
+
         rouge_metric = evaluate.load('rouge')
-
-        score = self.calculate_metric_on_test_ds(
-        dataset_samsum_pt['test'][0:10], rouge_metric, model_pegasus, tokenizer, batch_size = 2, column_text = 'dialogue', column_summary= 'summary'
-            )
-
-        rouge_dict = dict((rn, score[rn].mid.fmeasure ) for rn in rouge_names )
-
-        df = pd.DataFrame(rouge_dict, index = ['pegasus'] )
-        df.to_csv(self.config.metric_file_name, index=False)
-
+        logger.info(f"cargo de evaluadores listo")
+        #raw = load_dataset("samsum")  # or your source
         
+        
+        #score = self.calculate_metric_on_test_ds(
+        #dataset_samsum_pt['test'][0:10], rouge_metric, model_pegasus, tokenizer, batch_size = 2, column_text = 'dialogue', column_summary= 'summary')
+        logger.info(f"evaluación en dataset listo metrica rpuge")
+        #rouge_dict = dict((rn, score[rn].mid.fmeasure ) for rn in rouge_names )
+
+        #df = pd.DataFrame(rouge_dict, index = ['pegasus'] )
+        #df.to_csv(self.config.metric_file_name, index=False)
+        logger.info(f"se guarda dataframe y se acaba eval")

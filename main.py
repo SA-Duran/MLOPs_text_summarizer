@@ -44,7 +44,9 @@ STAGE_NAME = "Model Trainer stage"
 try: 
    logger.info(f"*******************")
    logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<")
+   logger.info(f"etapa inicializar clase")
    model_trainer = ModelTrainerTrainingPipeline()
+   logger.info(f"clase inicializada pasa a main")
    model_trainer.main()
    logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\nx==========x")
 except Exception as e:
@@ -58,7 +60,9 @@ STAGE_NAME = "Model Evaluation stage"
 try: 
    logger.info(f"*******************")
    logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<")
+   logger.info(f"etapa inicializar clase")
    model_evaluation = ModelEvaluationTrainingPipeline()
+   logger.info(f"clase inicializada pasa a main")
    model_evaluation.main()
    logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\nx==========x")
 except Exception as e:
