@@ -34,7 +34,8 @@ dependencies = [
     "uvicorn==0.18.3",
     "Jinja2==3.1.2",
     "evaluate",
-    "gdown"
+    "gdown",
+    "transformers[torch]"
 ]
 
 [tool.setuptools]

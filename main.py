@@ -16,7 +16,7 @@ except Exception as e:
         logger.exception(e)
         raise e
 
-"""
+
 
 STAGE_NAME = "Data Validation stage"
 try:
@@ -65,6 +65,6 @@ except Exception as e:
         logger.exception(e)
         raise e
 
-"""
+
 
 
