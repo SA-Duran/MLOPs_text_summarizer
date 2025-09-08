@@ -16,7 +16,7 @@ dependencies = [
     "transformers",
     "transformers[sentencepiece]",
     "datasets",
-    "sacrebleu ",
+    "sacrebleu",
     "rouge_score", 
     "py7zr",
     "pandas",
@@ -32,7 +32,9 @@ dependencies = [
     "ensure==1.0.2",
     "fastapi==0.78.0",
     "uvicorn==0.18.3",
-    "Jinja2==3.1.2"
+    "Jinja2==3.1.2",
+    "evaluate",
+    "gdown"
 ]
 
 [tool.setuptools]
